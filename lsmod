@@ -1,0 +1,69 @@
+Module                  Size  Used by
+xt_conntrack           16384  1
+nft_chain_nat          16384  3
+xt_MASQUERADE          20480  1
+nf_nat                 49152  2 nft_chain_nat,xt_MASQUERADE
+nf_conntrack_netlink    53248  0
+nf_conntrack          176128  4 xt_conntrack,nf_nat,nf_conntrack_netlink,xt_MASQUERADE
+nf_defrag_ipv6         24576  1 nf_conntrack
+nf_defrag_ipv4         16384  1 nf_conntrack
+xfrm_user              45056  1
+xfrm_algo              16384  1 xfrm_user
+xt_addrtype            16384  2
+nft_compat             20480  4
+nf_tables             278528  57 nft_compat,nft_chain_nat
+libcrc32c              16384  3 nf_conntrack,nf_nat,nf_tables
+nfnetlink              20480  4 nft_compat,nf_conntrack_netlink,nf_tables
+br_netfilter           32768  0
+bridge                331776  1 br_netfilter
+stp                    16384  1 bridge
+llc                    16384  2 bridge,stp
+overlay               163840  0
+binfmt_misc            24576  1
+nls_iso8859_1          16384  1
+intel_rapl_msr         20480  0
+intel_rapl_common      40960  1 intel_rapl_msr
+crct10dif_pclmul       16384  1
+ghash_clmulni_intel    16384  0
+hyperv_drm             20480  0
+drm_shmem_helper       24576  1 hyperv_drm
+aesni_intel           376832  0
+crypto_simd            16384  1 aesni_intel
+drm_kms_helper        200704  1 hyperv_drm
+fb_sys_fops            16384  1 drm_kms_helper
+cryptd                 24576  2 crypto_simd,ghash_clmulni_intel
+syscopyarea            16384  1 drm_kms_helper
+rapl                   20480  0
+serio_raw              20480  0
+hv_balloon             36864  0
+sysfillrect            20480  1 drm_kms_helper
+joydev                 32768  0
+sysimgblt              20480  1 drm_kms_helper
+mac_hid                16384  0
+hyperv_fb              24576  2
+vmgenid                16384  0
+sch_fq_codel           24576  3
+msr                    16384  0
+ramoops                32768  0
+parport_pc             53248  0
+reed_solomon           28672  1 ramoops
+drm                   581632  3 drm_kms_helper,drm_shmem_helper,hyperv_drm
+pstore_blk             16384  0
+ppdev                  24576  0
+pstore_zone            32768  1 pstore_blk
+lp                     28672  0
+parport                73728  3 parport_pc,lp,ppdev
+efi_pstore             16384  0
+ip_tables              32768  0
+x_tables               57344  5 xt_conntrack,nft_compat,xt_addrtype,ip_tables,xt_MASQUERADE
+autofs4                45056  2
+hid_generic            16384  0
+hid_hyperv             16384  0
+hv_storvsc             24576  2
+hyperv_keyboard        16384  0
+hid                   159744  2 hid_hyperv,hid_generic
+hv_netvsc             106496  0
+scsi_transport_fc      98304  1 hv_storvsc
+hv_utils               45056  0
+crc32_pclmul           16384  0
+hv_vmbus              147456  8 hv_balloon,hv_utils,hv_netvsc,hid_hyperv,hv_storvsc,hyperv_keyboard,hyperv_drm,hyperv_fb
