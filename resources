@@ -1,0 +1,45 @@
+Архитектура:                     x86_64
+CPU op-mode(s):                  32-bit, 64-bit
+Address sizes:                   39 bits physical, 48 bits virtual
+Порядок байт:                    Little Endian
+CPU(s):                          2
+On-line CPU(s) list:             0,1
+ID прроизводителя:               GenuineIntel
+Имя модели:                      Intel(R) Core(TM) i3-10105 CPU @ 3.70GHz
+Семейство ЦПУ:                   6
+Модель:                          165
+Потоков на ядро:                 2
+Ядер на сокет:                   1
+Сокетов:                         1
+Степпинг:                        3
+BogoMIPS:                        7391.99
+Флаги:                           fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 ss ht syscall nx pdpe1gb rdtscp lm constant_tsc rep_good nopl xtopology cpuid pni pclmulqdq ssse3 fma cx16 pcid sse4_1 sse4_2 movbe popcnt aes xsave avx f16c rdrand hypervisor lahf_lm abm 3dnowprefetch invpcid_single ssbd ibrs ibpb stibp ibrs_enhanced fsgsbase bmi1 avx2 smep bmi2 erms invpcid rdseed adx smap clflushopt xsaveopt xsavec xgetbv1 xsaves flush_l1d arch_capabilities
+Разработчик гипервизора:         Microsoft
+Тип виртуализации:               полный
+L1d cache:                       32 KiB (1 instance)
+L1i cache:                       32 KiB (1 instance)
+L2 cache:                        256 KiB (1 instance)
+L3 cache:                        6 MiB (1 instance)
+NUMA node(s):                    1
+NUMA node0 CPU(s):               0,1
+Vulnerability Itlb multihit:     KVM: Mitigation: VMX unsupported
+Vulnerability L1tf:              Not affected
+Vulnerability Mds:               Not affected
+Vulnerability Meltdown:          Not affected
+Vulnerability Mmio stale data:   Vulnerable: Clear CPU buffers attempted, no microcode; SMT Host state unknown
+Vulnerability Retbleed:          Mitigation; Enhanced IBRS
+Vulnerability Spec store bypass: Mitigation; Speculative Store Bypass disabled via prctl
+Vulnerability Spectre v1:        Mitigation; usercopy/swapgs barriers and __user pointer sanitization
+Vulnerability Spectre v2:        Mitigation; Enhanced IBRS, IBPB conditional, RSB filling, PBRSB-eIBRS SW sequence
+Vulnerability Srbds:             Unknown: Dependent on hypervisor status
+Vulnerability Tsx async abort:   Not affected
+               total        used        free      shared  buff/cache   available
+Память:      1,9Gi       1,1Gi        69Mi        26Mi       667Mi       543Mi
+Подкачка:      5,9Gi       306Mi       5,6Gi
+Файл.система   Размер Использовано  Дост Использовано% Cмонтировано в
+tmpfs            191M         1,5M  190M            1% /run
+/dev/sda2         63G          17G   43G           29% /
+tmpfs            955M            0  955M            0% /dev/shm
+tmpfs            5,0M            0  5,0M            0% /run/lock
+/dev/sda1        511M         6,1M  505M            2% /boot/efi
+tmpfs            191M         136K  191M            1% /run/user/1000
