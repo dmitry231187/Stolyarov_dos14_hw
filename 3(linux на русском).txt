@@ -1,0 +1,17 @@
+dmi@ubu:~$ ll | grep hwinfo
+-rwx------  1 dmi  dmi    430 мар  7 15:40 hwinfo*
+dmi@ubu:~$ cat hwinfo
+#!/bin/bash
+free_memory=$(free -h  | awk '{print $1,$4}' | grep Память | awk '{print $2}' | sed 's/Mi/Мб/g')
+load_cpu=$(bc <<< "scale=1;(100-$(top -bn1 | awk '/Cpu/ {print $8}' | sed 's/id,/100/g' | sed 's/,/./g'))")
+ip_adres=$(ifconfig eth0 | grep -w inet | awk '{print $2}')
+echo "свободная память: $free_memory"
+echo "загрузка процессора: $load_cpu %"
+echo "ип-адрес: $ip_adres"
+dmi@ubu:~$ ./hwinfo
+свободная память: 203Мб
+загрузка процессора: 3.1 %
+ип-адрес: 192.168.73.137
+dmi@ubu:~$
+
+

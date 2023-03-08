@@ -1,0 +1,58 @@
+Stolyarov@lesson2:~$ sudo adduser user1
+Adding user `user1' ...
+Adding new group `user1' (1002) ...
+Adding new user `user1' (1001) with group `user1' ...
+Creating home directory `/home/user1' ...
+Copying files from `/etc/skel' ...
+New password:
+Retype new password:
+passwd: password updated successfully
+Changing the user information for user1
+Enter the new value, or press ENTER for the default
+        Full Name []:
+        Room Number []:
+        Work Phone []:
+        Home Phone []:
+        Other []:
+Is the information correct? [Y/n] y
+Stolyarov@lesson2:~$ ll /home/
+total 16
+drwxr-xr-x  4 root      root      4096 Mar  8 09:10 ./
+drwxr-xr-x 18 root      root      4096 Mar  8 08:40 ../
+drwxr-xr-x  6 Stolyarov Stolyarov 4096 Mar  8 09:01 Stolyarov/
+drwxr-xr-x  2 user1     user1     4096 Mar  8 09:10 user1/
+
+
+Stolyarov@lesson2:~$ chmod 705 hwinfo
+Stolyarov@lesson2:~$ ll
+total 44
+drwxr-xr-x 6 Stolyarov Stolyarov 4096 Mar  8 09:01 ./
+drwxr-xr-x 4 root      root      4096 Mar  8 09:10 ../
+-rw------- 1 Stolyarov Stolyarov 1100 Mar  8 09:02 .bash_history
+-rw-r--r-- 1 Stolyarov Stolyarov  220 Feb 25  2020 .bash_logout
+-rw-r--r-- 1 Stolyarov Stolyarov 3861 Mar  8 09:01 .bashrc
+drwx------ 2 Stolyarov Stolyarov 4096 Mar  5 10:33 .cache/
+drwx------ 3 Stolyarov Stolyarov 4096 Mar  8 08:45 .config/
+drwxrwxr-x 3 Stolyarov Stolyarov 4096 Mar  5 16:53 .local/
+-rw-r--r-- 1 Stolyarov Stolyarov  807 Feb 25  2020 .profile
+drwx------ 2 Stolyarov Stolyarov 4096 Mar  5 16:56 .ssh/
+-rw-r--r-- 1 Stolyarov Stolyarov    0 Mar  5 16:22 .sudo_as_admin_successful
+-rwx---r-x 1 Stolyarov Stolyarov  413 Mar  8 08:56 hwinfo*
+
+user1@lesson2:~$ /home/Stolyarov/./hwinfo
+свободная память: 1.3Гб
+загрузка процессора: 0 %
+ип-адрес: 10.1.2.4
+
+user1@lesson2:~$ cat /home/Stolyarov/hwinfo
+#!/bin/bash
+free_memory=$(free -h | awk '/Mem/ {print $4}' | sed 's/Mi/Мб/g' | sed 's/Gi/Гб/g')
+load_cpu=$(bc <<< "scale=1;(100-$(top -bn1 | awk '/Cpu/ {print $8}' | sed 's/id,/100/g' | sed 's/,/./g'))")
+ip_adres=$(ifconfig eth0 | grep -w inet | awk '{print $2}')
+echo "свободная память: $free_memory"
+echo "загрузка процессора: $load_cpu %"
+echo "ип-адрес: $ip_adres"
+
+user1@lesson2:~$ id user1
+uid=1001(user1) gid=1002(user1) groups=1002(user1)
+
