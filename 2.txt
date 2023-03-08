@@ -1,0 +1,80 @@
+dmi@ubu:~$ top -bn1 -u dmi
+top - 18:52:15 up 22:49,  2 users,  load average: 0,01, 0,01, 0,00
+Tasks: 183 total,   1 running, 182 sleeping,   0 stopped,   0 zombie
+%Cpu(s):  0,0 us,  3,1 sy,  0,0 ni, 96,9 id,  0,0 wa,  0,0 hi,  0,0 si,  0,0 st
+МиБ Mem :   1909,8 total,     89,8 free,    849,7 used,    970,4 buff/cache
+МиБ Swap:   6046,0 total,   5878,0 free,    168,0 used.    893,4 avail Mem
+
+    PID USER      PR  NI    VIRT    RES    SHR S  %CPU  %MEM     TIME+ COMMAND
+    949 dmi       20   0   17956   9036   6540 S   0,0   0,5   0:00.27 systemd
+    950 dmi       20   0  104356   1072      0 S   0,0   0,1   0:00.00 (sd-pam)
+    956 dmi        9 -11   50756   5556   4588 S   0,0   0,3   0:00.01 pipewire
+    957 dmi       20   0   34644   5048   4096 S   0,0   0,3   0:00.03 pipewire-media-
+    958 dmi        9 -11 1095344  12572   9568 S   0,0   0,6   0:00.03 pulseaudio
+    983 dmi       20   0  252308   4892   4320 S   0,0   0,3   0:00.01 gnome-keyring-d
+    992 dmi       20   0   10360   5904   3588 S   0,0   0,3   0:00.25 dbus-daemon
+    995 dmi       20   0  173832   5560   5352 S   0,0   0,3   0:00.00 gdm-x-session
+   1001 dmi       20   0  474864   7368   6564 S   0,0   0,4   0:00.02 xdg-document-po
+   1002 dmi       20   0  252080   6576   6096 S   0,0   0,3   0:00.02 gvfsd
+   1005 dmi       20   0  247716   4872   4464 S   0,0   0,2   0:00.00 xdg-permission-
+   1021 dmi       20   0  380884   5544   5220 S   0,0   0,3   0:00.00 gvfsd-fuse
+   1038 dmi       39  19  644808  17404  11844 S   0,0   0,9   0:00.52 tracker-miner-f
+   1045 dmi       20   0  327548   8440   6960 S   0,0   0,4   0:00.06 gvfs-udisks2-vo
+   1050 dmi       20   0  326640   7856   6996 S   0,0   0,4   0:01.79 gvfs-afc-volume
+   1055 dmi       20   0  247836   5328   4840 S   0,0   0,3   0:00.00 gvfs-mtp-volume
+   1060 dmi       20   0  248792   5572   4968 S   0,0   0,3   0:00.00 gvfs-gphoto2-vo
+   1070 dmi       20   0  234428  11128   9372 S   0,0   0,6   0:00.01 gnome-session-b
+   1075 dmi       20   0  248068   6288   5792 S   0,0   0,3   0:00.00 gvfs-goa-volume
+   1080 dmi       20   0  576104  12564  12092 S   0,0   0,6   0:00.04 goa-daemon
+   1157 dmi       20   0  349988   9652   9460 S   0,0   0,5   0:00.03 goa-identity-se
+   1182 dmi       20   0  309616   6264   6092 S   0,0   0,3   0:00.00 at-spi-bus-laun
+   1191 dmi       20   0    8428   3988   3516 S   0,0   0,2   0:00.01 dbus-daemon
+   1213 dmi       20   0  103088   4492   4056 S   0,0   0,2   0:00.00 gnome-session-c
+   1226 dmi       20   0  670840  12264  10512 S   0,0   0,6   0:00.07 gnome-session-b
+   1262 dmi       20   0 3924748 207852  62948 S   0,0  10,6   6:11.29 gnome-shell
+   1295 dmi       20   0  582716   7568   7356 S   0,0   0,4   0:00.03 gnome-shell-cal
+   1303 dmi       20   0 1083916  14436  11608 S   0,0   0,7   0:00.04 evolution-sourc
+   1312 dmi       20   0  934116  15292  12616 S   0,0   0,8   0:00.06 evolution-calen
+   1313 dmi       20   0  156948   5500   4872 S   0,0   0,3   0:00.00 dconf-service
+   1333 dmi       20   0  683972  13208  10856 S   0,0   0,7   0:00.03 evolution-addre
+   1347 dmi       20   0  326476   7524   6304 S   0,0   0,4   0:00.01 gvfsd-trash
+   1356 dmi       20   0 2611084  17840  13016 S   0,0   0,9   0:00.04 gjs
+   1361 dmi       20   0  162744   7288   6516 S   0,0   0,4   0:00.00 at-spi2-registr
+   1373 dmi       20   0    2888    868    868 S   0,0   0,0   0:00.00 sh
+   1374 dmi       20   0  322104   6432   5828 S   0,0   0,3   0:00.00 gsd-a11y-settin
+   1375 dmi       20   0  742672  20096  14368 S   0,0   1,0   0:00.22 gsd-color
+   1376 dmi       20   0  387120  11340   9764 S   0,0   0,6   0:00.01 gsd-datetime
+   1377 dmi       20   0  323596   6860   6100 S   0,0   0,4   0:00.79 gsd-housekeepin
+   1378 dmi       20   0  427348  19144  14132 S   0,0   1,0   0:00.07 gsd-keyboard
+   1380 dmi       20   0 1073960  20732  15104 S   0,0   1,1   0:00.09 gsd-media-keys
+   1382 dmi       20   0  463572  20220  14448 S   0,0   1,0   0:00.14 gsd-power
+   1389 dmi       20   0  261644   8128   7460 S   0,0   0,4   0:00.02 gsd-print-notif
+   1390 dmi       20   0  469332   5880   5280 S   0,0   0,3   0:00.01 gsd-rfkill
+   1391 dmi       20   0  247764   6012   5504 S   0,0   0,3   0:00.00 gsd-screensaver
+   1395 dmi       20   0  477604   7584   6248 S   0,0   0,4   0:00.02 gsd-sharing
+   1396 dmi       20   0  397712   6648   5852 S   0,0   0,3   0:00.00 gsd-smartcard
+   1398 dmi       20   0  331016   7880   7020 S   0,0   0,4   0:00.00 gsd-sound
+   1402 dmi       20   0  326412   9224   6180 S   0,0   0,5   0:00.04 ibus-daemon
+   1403 dmi       20   0  353932  19196  14080 S   0,0   1,0   0:00.08 gsd-wacom
+   1404 dmi       20   0  355528  20256  14564 S   0,0   1,0   0:00.09 gsd-xsettings
+   1419 dmi       20   0  487900  10580   8724 S   0,0   0,5   0:01.14 xdg-desktop-por
+   1430 dmi       20   0  232260   5528   4480 S   0,0   0,3   0:00.00 gsd-disk-utilit
+   1453 dmi       20   0  824480  30352  20792 S   0,0   1,6   0:00.22 evolution-alarm
+   1469 dmi       20   0  175048   5808   5808 S   0,0   0,3   0:00.00 ibus-memconf
+   1470 dmi       20   0 1192728  29504  16332 S   0,0   1,5   0:00.16 xdg-desktop-por
+   1491 dmi       20   0  284600  20868  13568 S   0,0   1,1   0:00.88 ibus-extension-
+   1500 dmi       20   0  206236  19328  14028 S   0,0   1,0   0:00.06 ibus-x11
+   1506 dmi       20   0  248800   6688   6072 S   0,0   0,3   0:00.00 ibus-portal
+   1529 dmi       20   0  353836   9940   8136 S   0,0   0,5   0:00.01 gsd-printer
+   1537 dmi       20   0 1060804 175012  14844 S   0,0   8,9   0:06.22 snap-store
+   1545 dmi       20   0 2545560  17872  13000 S   0,0   0,9   0:00.03 gjs
+   1616 dmi       20   0  175048   6468   5868 S   0,0   0,3   0:00.00 ibus-engine-sim
+   1647 dmi       20   0  354152  18776  13856 S   0,0   1,0   0:00.06 xdg-desktop-por
+   1694 dmi       20   0   76120    484      0 S   0,0   0,0   0:00.04 snapd-desktop-i
+   1768 dmi       20   0  311832   5876    412 S   0,0   0,3   0:00.06 snapd-desktop-i
+   1802 dmi       20   0 3001228  41288  25704 S   0,0   2,1   0:00.64 gjs
+   1822 dmi       20   0  174452   6192   5600 S   0,0   0,3   0:00.00 gvfsd-metadata
+   2314 dmi       20   0  430036  24364  17492 S   0,0   1,2   0:01.23 update-notifier
+  11333 dmi       20   0   17424   8060   5588 S   0,0   0,4   0:00.45 sshd
+  11334 dmi       20   0   62848  45848   3792 S   0,0   2,3   0:00.17 bash
+  12277 dmi       20   0   24324   4072   3460 R   0,0   0,2   0:00.00 top
