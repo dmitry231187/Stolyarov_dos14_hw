@@ -1,1 +1,21 @@
+vboxuser@ubuntu2:~$ ./61 hello my world
+hello my world
+hellomyworld
+vboxuser@ubuntu2:~$ cat 61
+#!/bin/bash
+
+if [[ -z $* ]] ; then 
+ echo -n "Enter string: "
+ read string
+else
+ string=$*
+fi
+echo $string
+
+read -ra array <<< $string
+for i in "${array[@]}"
+do
+ newString=$newString$i
+done
+echo $newString
 
