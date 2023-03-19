@@ -1,0 +1,36 @@
+arr1=("foo" "bar" "blah" "test" "123" "smad" "dasd" "foo")
+arr2=("bar" "blah" "test" "1223" "ss" "foo" "dfd")
+k=0
+m=0
+n=0
+for i in "${arr1[@]}"
+do
+ for j in "${arr2[@]}"
+ do
+  if [ $i = $j ]; then 
+   arr3[$k]=$i
+   n=0
+   for l in "${arr3[@]}"
+   do
+  #  echo $m $k $l $i ${#arr3[*]} ${#returns[*]}
+    if [ $l = $i ] ; then
+     echo $n $m $k $l $i
+     n=1
+    fi
+   done
+   if [ $n -eq 0 ] ; then
+    echo $n
+ #   n=0
+    returns[$m]=$i 
+    echo $m $k $l $i 'if'
+    m=$(($m+1))
+   fi
+   k=$(($k+1))
+  fi
+ done
+done
+
+echo -ne 'arr1: ' ${arr1[@]} '\n'
+echo -ne 'arr2: ' ${arr2[@]} '\n'
+echo -ne 'arr3: ' ${arr3[@]} '\n'
+echo -ne 'returns: ' ${returns[@]} '\n'
