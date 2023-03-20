@@ -13,12 +13,12 @@ for i in "${arr1[@]}"
 do
  for j in "${arr2[@]}"
  do
-  if [ $i = $j ]; then
+  if [ $i == $j ]; then
    arr3[$k]=$i
    flag=0
    for l in "${arr3[@]}"
    do
-    if [ $l = $i ] ; then
+    if [ $l == $i ] ; then
      flag=$(($flag+1))
     fi
    done
