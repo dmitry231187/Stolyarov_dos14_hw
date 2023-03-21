@@ -1,0 +1,65 @@
+ux@adm-p2:~/63$ ls
+63.sh  Devops.pptx    dddd    file         loops.sh        redirects.sh  stdout.txt  txt
+Ccc    conditions.sh  ex3.sh  fizzbuzz.sh  pptx.pptx.pptx  stderr.txt    text.txt    variables.sh
+
+ux@adm-p2:~/63$ ./63.sh
+Files with pptx extension:
+Devops.pptx
+pptx.pptx.pptx
+Files with sh extension:
+63.sh
+conditions.sh
+ex3.sh
+fizzbuzz.sh
+loops.sh
+redirects.sh
+variables.sh
+Files with txt extension:
+stderr.txt
+stdout.txt
+text.txt
+Files with no Extension:
+Ccc
+dddd
+file
+txt
+
+ux@adm-p2:~/63$ cat 63.sh
+#!/bin/bash
+arr_files=($(ls -A)) #сортировка сортирует сперва большие буквы затем отдельно маленькие O_o
+arr_ext=()
+arr_FwExt=()
+arr_FnoExt=()
+for i in ${arr_files[@]}
+do
+ if [[ "$i" =~ .*\.[0-9A-Za-z]+ ]]; then
+# собираем массив файлов с расширениями
+  arr_FwExt+=($i)
+# собираем массив расширений файлов (не нашёл что значит \1)
+  arr_ext+=($(sed -r 's/.*\.([0-9A-Za-z]+)/\1/' <<< $i))
+ else
+# иначе собираем массив файлов без расширения
+  arr_FnoExt+=($i)
+ fi
+done
+
+# делаем массив с расширениями уникальным
+arr_ext=($(echo "${arr_ext[@]}" | tr ' ' '\n' | sort -u | tr '\n' ' '))
+
+# берём расширение из массива и проверяем каждое из них на совпадение с массивом файлов с расш. и печатаем если да
+for m in ${arr_ext[@]}
+do
+ echo "Files with $m extension:"
+ for n in ${arr_FwExt[@]}
+ do
+   echo "$n" | grep ".$m"
+ done
+done
+
+# выводим файлы без расширений
+echo "Files with no Extension: "
+i=0
+for i in ${arr_FnoExt[@]}
+do
+ echo "$i"
+done
