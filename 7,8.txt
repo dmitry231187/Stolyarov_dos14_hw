@@ -1,0 +1,41 @@
+dmi@ubu:/etc/systemd/system$ cat test-service.service
+[Unit]
+Description=Test-service
+
+[Service]
+Type=simple
+User=dmi
+Group=dmi
+ExecStart=/bin/bash -c "top -b"
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
+
+dmi@ubu:/etc/systemd/system$ sudo systemctl daemon-reload
+dmi@ubu:/etc/systemd/system$ sudo systemctl enable test-service.service
+Created symlink /etc/systemd/system/multi-user.target.wants/test-service.service → /etc/systemd/system/test-service.service.
+dmi@ubu:/etc/systemd/system$ sudo systemctl start test-service.service
+
+dmi@ubu:/etc/systemd/system$ sudo systemctl status test-service.service
+● test-service.service - Test-service
+     Loaded: loaded (/etc/systemd/system/test-service.service; enabled; vendor preset: enabled)
+     Active: active (running) since Thu 2023-03-09 20:09:19 +03; 1min 7s ago
+   Main PID: 2349191 (top)
+      Tasks: 1 (limit: 2198)
+     Memory: 908.0K
+        CPU: 75ms
+     CGroup: /system.slice/test-service.service
+             └─2349191 top -b
+
+мар 09 20:10:25 ubu bash[2349191]: 2301668 root      20   0       0      0      0 I   0,0   0,0   0:00.17 kworker+
+мар 09 20:10:25 ubu bash[2349191]: 2317816 root      20   0       0      0      0 I   0,0   0,0   0:00.06 kworker+
+мар 09 20:10:25 ubu bash[2349191]: 2325336 root      20   0       0      0      0 I   0,0   0,0   0:00.05 kworker+
+мар 09 20:10:25 ubu bash[2349191]: 2329867 root      20   0       0      0      0 I   0,0   0,0   0:00.08 kworker+
+мар 09 20:10:25 ubu bash[2349191]: 2333781 root      20   0       0      0      0 I   0,0   0,0   0:00.05 kworker+
+мар 09 20:10:25 ubu bash[2349191]: 2334693 root      20   0       0      0      0 I   0,0   0,0   0:00.07 kworker+
+мар 09 20:10:25 ubu bash[2349191]: 2338770 root      20   0       0      0      0 I   0,0   0,0   0:00.00 kworker+
+мар 09 20:10:25 ubu bash[2349191]: 2342554 root      20   0       0      0      0 I   0,0   0,0   0:00.02 kworker+
+мар 09 20:10:25 ubu bash[2349191]: 2343492 root      20   0       0      0      0 I   0,0   0,0   0:00.00 kworker+
+мар 09 20:10:25 ubu bash[2349191]: 2344677 root      20   0       0      0      0 I   0,0   0,0   0:00.03 kworker+
+dmi@ubu:/etc/systemd/system$

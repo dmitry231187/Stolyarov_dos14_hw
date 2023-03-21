@@ -1,0 +1,71 @@
+dmi@ubu:~$ ll | grep hwinfo
+-rwx------  1 dmi  dmi    430 мар  7 15:40 hwinfo*
+-rwx------  1 dmi  dmi    668 мар  9 16:22 hwinfo2*
+-rw-rw-r--  1 dmi  dmi   1542 мар  9 18:30 hwinfoOut
+dmi@ubu:~$ cat hwinfo2
+#!/bin/bash
+NumOfProc=$(top -bn1 -u dmi | grep dmi -w | grep top -vw | grep grep -vwc)
+LoadAverage15=$(top -bn1 | awk '/average/ {print $14}')
+free_memory=$(free -h  | awk '{print $1,$4}' | grep Память | awk '{print $2}' | sed 's/Mi/Мб/g' | sed 's/Gi/Гб/g')
+#free_memory=$(top -bn1 | awk '/МиБ Mem/ {print $6}')
+free_space=$(df / -h | awk '/dev/ {print $4}' | sed 's/G/Гб/g')
+echo "Количество запущенных процессов: $NumOfProc"
+echo "Средняя загрузка системы за 15 минут: $LoadAverage15"
+echo "Свободная память: $free_memory"
+echo "Свободное место в /: $free_space"
+
+dmi@ubu:~$ cat hwinfoOut
+Количество запущенных процессов: 25
+Средняя загрузка системы за 15 минут: 0,08
+Свободная память: 108Мб
+Свободное место в /: 42Гб
+Количество запущенных процессов: 25
+Средняя загрузка системы за 15 минут: 0,06
+Свободная память: 97Мб
+Свободное место в /: 42Гб
+Количество запущенных процессов: 25
+Средняя загрузка системы за 15 минут: 0,05
+Свободная память: 104Мб
+Свободное место в /: 42Гб
+Количество запущенных процессов: 24
+Средняя загрузка системы за 15 минут: 0,04
+Свободная память: 93Мб
+Свободное место в /: 42Гб
+Количество запущенных процессов: 24
+Средняя загрузка системы за 15 минут: 0,04
+Свободная память: 71Мб
+Свободное место в /: 42Гб
+Количество запущенных процессов: 24
+Средняя загрузка системы за 15 минут: 0,04
+Свободная память: 72Мб
+Свободное место в /: 42Гб
+Количество запущенных процессов: 24
+Средняя загрузка системы за 15 минут: 0,03
+Свободная память: 69Мб
+Свободное место в /: 42Гб
+
+dmi@ubu:~$ crontab -l
+# Edit this file to introduce tasks to be run by cron.
+#
+# Each task to run has to be defined through a single line
+# indicating with different fields when the task will be run
+# and what command to run for the task
+#
+# To define the time you can provide concrete values for
+# minute (m), hour (h), day of month (dom), month (mon),
+# and day of week (dow) or use '*' in these fields (for 'any').
+#
+# Notice that tasks will be started based on the cron's system
+# daemon's notion of time and timezones.
+#
+# Output of the crontab jobs (including errors) is sent through
+# email to the user the crontab file belongs to (unless redirected).
+#
+# For example, you can run a backup of all your user accounts
+# at 5 a.m every week with:
+# 0 5 * * 1 tar -zcf /var/backups/home.tgz /home/
+#
+# For more information see the manual pages of crontab(5) and cron(8)
+#
+# m h    dom mon dow   command
+ */10 * * * * /home/dmi/./hwinfo2 >> /home/dmi/hwinfoOut

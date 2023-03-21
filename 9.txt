@@ -1,0 +1,18 @@
+dmi@ubu:~$ ./hwinfo2
+Количество запущенных процессов: 22
+Средняя загрузка системы за 15 минут: 0,07
+Свободная память: 63Мб
+Свободное место в /: 42Гб
+dmi@ubu:~$ cat hwinfo2
+#!/bin/bash
+NumOfProc=$(top -bn1 -u dmi | grep dmi -w | grep top -vw | grep grep -vwc)
+LoadAverage15=$(top -bn1 | awk '/average/ {print $14}')
+free_memory=$(free -h  | awk '{print $1,$4}' | grep Память | awk '{print $2}' | sed 's/Mi/Мб/g' | sed 's/Gi/Гб/g')
+#free_memory=$(top -bn1 | awk '/МиБ Mem/ {print $6}')
+free_space=$(df / -h | awk '/dev/ {print $4}' | sed 's/G/Гб/g')
+echo "Количество запущенных процессов: $NumOfProc"
+echo "Средняя загрузка системы за 15 минут: $LoadAverage15"
+echo "Свободная память: $free_memory"
+echo "Свободное место в /: $free_space"
+
+

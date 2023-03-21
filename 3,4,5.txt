@@ -1,0 +1,28 @@
+dmi@ubu:~$ jobs
+dmi@ubu:~$ ping localhost > 1.txt &
+[1] 12715
+dmi@ubu:~$ jobs
+[1]+  Запущен          ping localhost > 1.txt &
+dmi@ubu:~$ ^C
+dmi@ubu:~$ disown %1
+dmi@ubu:~$ jobs
+dmi@ubu:~$ top -bn1 | grep 12715
+  12715 dmi       20   0   21504   1284   1156 S   0,0   0,1   0:00.06 ping
+dmi@ubu:~$ exit
+
+...
+Hello Dmitry
+
+1 device has a firmware upgrade available.
+Run `fwupdmgr get-upgrades` for more information.
+
+Last login: Wed Mar  8 19:03:42 2023 from 192.168.72.101
+свободная память: 85Мб
+загрузка процессора: 3.2 %
+ип-адрес: 192.168.73.137
+dmi@ubu:~$ top -bn1 | grep 12715
+  12715 dmi       20   0   21504   1284   1156 S   0,0   0,1   0:00.07 ping
+dmi@ubu:~$ kill -9 12715
+dmi@ubu:~$ top -bn1 | grep 12715
+dmi@ubu:~$
+
