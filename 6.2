@@ -1,0 +1,40 @@
+ux@adm-p2:~$ ./62
+arr1: foo bar blah test 123 smad dasd foo
+arr2: bar blah test 1223 ss foo dfd
+arr3: bar blah foo test
+
+ux@adm-p2:~$ cat 62
+#!/bin/bash
+# получаем исходные данные
+usage() {
+ arr1=("foo" "bar" "blah" "test" "123" "smad" "dasd" "foo")
+ arr2=("bar" "blah" "test" "1223" "ss" "foo" "dfd")
+}
+
+# сравниваем 2 массива
+comparison() {
+ for i in ${arr1[@]}
+ do
+  for j in ${arr2[@]}
+  do
+  if [ "$i" == "$j" ]; then
+   arr3+=($i)
+  fi
+  done
+ done
+}
+
+main() {
+ # получаем исходные данные
+ usage "$@"
+ # сравниваем 2 массива
+ comparison
+ # выводим исходные данные
+ echo "arr1: ${arr1[@]}"
+ echo "arr2: ${arr2[@]}"
+ # делаем массив с расширениями уникальным и выводим его
+ echo "arr3: ${arr3[@]}" | tr ' ' '\n' | sort -u | tr '\n' ' '
+ echo
+}
+
+main "$@"
