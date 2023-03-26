@@ -1,0 +1,33 @@
+ux@adm-p2:~$ ./61
+Enter string: hello world
+helloworld
+ux@adm-p2:~$ ./61 this is test sample
+thisistestsample
+ux@adm-p2:~$ cat 61
+#!/bin/bash
+usage() {
+ #выводим предупреждение и образец правильного ввода данных
+ echo -e "Вводите данные правильно! \nобразец: ./61 this is test sample"
+ exit 1
+}
+
+errors() {
+ # проверяем введены ли данные, если нет - запрашиваем их, если совсем нет - отправляем в образец
+if [[ -z $* ]]; then
+ read -p "Enter string: " string
+ if [[ -z $string ]]; then
+  usage
+ fi
+else
+ string=$*
+fi
+}
+
+main() {
+# проверяем на ошибки
+errors "$@"
+# выводим результат убрав пробелы
+echo "$string" | sed 's/ //g'
+}
+
+main "$@"
