@@ -1,0 +1,43 @@
+ux@adm-p2:~$ ./72 As Soon As Possible
+ASAP
+ux@adm-p2:~$ ./72 Liquid-crystal display
+LCD
+ux@adm-p2:~$ ./72 hello my world
+HMW
+
+ux@adm-p2:~$ cat 72
+#!/bin/bash
+
+usage() {
+# вывод примера использования и завершение выполнения с кодом 1
+ echo -e "вводите данные правильно!\nпримеры:\n./71.sh As Soon As Possible\n./71.sh Liquid-crystal display\n"
+ exit 1
+}
+
+errors() {
+# проверяем наличие исходных данных и запрашиваем их если нету.
+ if [[ -z $* ]]; then
+  read -p "Введите фразу: " phrase
+  if [[ -z $phrase ]]; then
+   usage
+  fi
+ else
+  phrase=$@
+ fi
+}
+
+main() {
+# проверяем на ошибки
+errors "$@"
+# меняем тире на пробел
+phrase=$(tr '-' ' ' <<< $phrase)
+# собираем первые буквы слов
+for i in ${phrase[@]}
+do
+ acro+=($(sed -r 's/^(.).*/\1/' <<< $i))
+done
+# выводим результат в верхнем регистре убрав пробелы
+echo "${acro[@]}" | sed 's/ //g' | tr [:lower:] [:upper:]
+}
+
+main "$@"
