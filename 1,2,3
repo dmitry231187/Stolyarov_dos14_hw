@@ -1,0 +1,9 @@
+1) Сгенерировать 500 текстовых файлов размером 1кб
+for i in {1..500}; do dd if=/dev/urandom of=/dev/stdout bs=1K count=1 2>/dev/null | base64 > $i; done
+
+2) Сгенерировать 500 текстовых файлов размером 500кб
+for i in {1..500}; do dd if=/dev/urandom of=/dev/stdout bs=500K count=1 2>/dev/null | base64 > $i; done
+
+3) Сгенерировать 100 текстовых файлов 1mb
+for i in {1..100}; do dd if=/dev/urandom of=/dev/stdout bs=500M count=1 2>/dev/null | base64 > $i; done
+
