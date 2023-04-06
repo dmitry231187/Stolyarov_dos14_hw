@@ -1,0 +1,1 @@
+for i in 1 2 3; do count=501; size=1K; if [ $i -eq 2 ]; then size=500K; elif [ $i -eq 3 ]; then count=101; size=1M; fi; while [ $count != 1 ]; do ((count--)); dd if=/dev/urandom of=/dev/stdout bs=$size count=1 2>/dev/null | base64 > $i-$count; done; done
