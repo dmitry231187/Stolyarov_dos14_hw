@@ -9,3 +9,11 @@ for i in {1..100}; do dd if=/dev/urandom of=/dev/stdout bs=1M count=1 2>/dev/nul
 
 4) Синхронизировать c сервером только сгенерированные файлы больше 400kb
 rsync -zvarp ./ dmi@localhost:/home/dmi/copy12 --min-size=400K
+
+5) Создать 2mb файл и заменить все вхождения а|A на пробел строку в vim
+dd if=/dev/urandom of=/dev/stdout bs=2M count=1 2>/dev/null | base64 > 5_1
+:%s/[Aa]/ /g
+
+
+
+dd if=/dev/urandom of=/dev/stdout bs=2M count=1 2>/dev/null | base64 | sed 's/[aA]/ /g' > 5_1
