@@ -1,0 +1,85 @@
+
+sudo pvcreate /dev/sdb1
+sudo pvcreate /dev/sdb2
+sudo pvcreate /dev/sdc1
+sudo pvcreate /dev/sdc2
+sudo vgcreate vg /dev/{sdb1,sdc1}
+sudo lvcreate -l 50%VG -i2 -n raid0 vg
+
+dmi@ubu:~$ sudo lvdisplay
+  --- Logical volume ---
+  LV Path                /dev/vg/raid0
+  LV Name                raid0
+  VG Name                vg
+  LV UUID                uvCGbf-uDHp-c2E2-duvd-Sg4O-uUuu-0BaCkk
+  LV Write Access        read/write
+  LV Creation host, time ubu, 2023-04-10 14:21:23 +0300
+  LV Status              available
+  # open                 0
+  LV Size                5,00 GiB
+  Current LE             1280
+  Segments               1
+  Allocation             inherit
+  Read ahead sectors     auto
+  - currently set to     512
+  Block device           253:0
+
+
+dmi@ubu:~$ lsblk
+NAME         MAJ:MIN RM   SIZE RO TYPE MOUNTPOINTS
+...
+sda            8:0    0    64G  0 disk
+├─sda1         8:1    0   512M  0 part /boot/efi
+└─sda2         8:2    0  63,5G  0 part /var/snap/firefox/common/host-hunspell
+                                       /
+sdb            8:16   0    10G  0 disk
+├─sdb1         8:17   0     5G  0 part
+│ └─vg-raid0 253:0    0     5G  0 lvm
+└─sdb2         8:18   0     5G  0 part
+sdc            8:32   0    10G  0 disk
+├─sdc1         8:33   0     5G  0 part
+│ └─vg-raid0 253:0    0     5G  0 lvm
+└─sdc2         8:34   0     5G  0 part
+sr0           11:0    1  1024M  0 rom
+
+
+dmi@ubu:~$ sudo mkfs.ext4 /dev/vg/raid0
+mke2fs 1.46.5 (30-Dec-2021)
+Discarding device blocks: done
+Creating filesystem with 1310720 4k blocks and 327680 inodes
+Filesystem UUID: 7f34ec68-1e97-4afb-bde2-af65e521aba0
+Superblock backups stored on blocks:
+        32768, 98304, 163840, 229376, 294912, 819200, 884736
+
+Allocating group tables: done
+Сохранение таблицы inod'ов: done
+Создание журнала (16384 блоков): готово
+Writing superblocks and filesystem accounting information: готово
+
+
+dmi@ubu:~$ sudo mount /dev/vg/raid0 /tmp
+dmi@ubu:~$ df -h
+Файл.система         Размер Использовано  Дост Использовано% Cмонтировано в
+tmpfs                   49M         1,5M   48M            3% /run
+/dev/sda2               63G          22G   38G           36% /
+tmpfs                  243M            0  243M            0% /dev/shm
+tmpfs                  5,0M            0  5,0M            0% /run/lock
+/dev/sda1              511M         6,1M  505M            2% /boot/efi
+tmpfs                   49M          96K   49M            1% /run/user/1000
+/dev/mapper/vg-raid0   4,9G          24K  4,6G            1% /tmp
+dmi@ubu:~$ lsblk
+NAME         MAJ:MIN RM   SIZE RO TYPE MOUNTPOINTS
+...
+sda            8:0    0    64G  0 disk
+├─sda1         8:1    0   512M  0 part /boot/efi
+└─sda2         8:2    0  63,5G  0 part /var/snap/firefox/common/host-hunspell
+                                       /
+sdb            8:16   0    10G  0 disk
+├─sdb1         8:17   0     5G  0 part
+│ └─vg-raid0 253:0    0     5G  0 lvm  /tmp
+└─sdb2         8:18   0     5G  0 part
+sdc            8:32   0    10G  0 disk
+├─sdc1         8:33   0     5G  0 part
+│ └─vg-raid0 253:0    0     5G  0 lvm  /tmp
+└─sdc2         8:34   0     5G  0 part
+sr0           11:0    1  1024M  0 rom
