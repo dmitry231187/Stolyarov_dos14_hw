@@ -1,1 +1,1 @@
-sudo find / -type f -mtime -1 -user ux -o -user root
+sudo find / -type f -mtime -1 \( -user $(whoami) -o -user root \)
