@@ -1,0 +1,15 @@
+1) Сгенерировать 500 текстовых файлов размером 1кб
+for i in {1..500}; do dd if=/dev/urandom of=/dev/stdout bs=1K count=1 2>/dev/null | base64 > 1_$i; done
+
+2) Сгенерировать 500 текстовых файлов размером 500кб
+for i in {1..500}; do dd if=/dev/urandom of=/dev/stdout bs=500K count=1 2>/dev/null | base64 > 2_$i; done
+
+3) Сгенерировать 100 текстовых файлов 1mb
+for i in {1..100}; do dd if=/dev/urandom of=/dev/stdout bs=1M count=1 2>/dev/null | base64 > 3_$i; done
+
+4) Синхронизировать c сервером только сгенерированные файлы больше 400kb
+rsync -zvarp ./ dmi@localhost:/home/dmi/copy12 --min-size=400K
+
+5) Создать 2mb файл и заменить все вхождения а|A на пробел строку в vim
+dd if=/dev/urandom of=/dev/stdout bs=2M count=1 2>/dev/null | base64 > 5_1
+:%s/[Aa]/ /g
